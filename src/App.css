@@ -35,17 +35,6 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
-.slides::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-.slides::-webkit-scrollbar-thumb {
-  background: black;
-  border-radius: 10px;
-}
-.slides::-webkit-scrollbar-track {
-  background: transparent;
-}
 .slides > div {
   scroll-snap-align: start;
   flex-shrink: 0;
