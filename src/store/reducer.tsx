@@ -4,10 +4,8 @@ import * as actions from './actionTypes'
 export const reducer = (state: any, action: any) => {
     switch (action.type) {
         case actions.FETCH_RATES:
-            console.log('data:', action.data.rates)
             return { ...state, rates: action.data?.rates }
         case actions.HANDLE_INPUT:
-            console.log(action, state.wallet)
             return {
                 ...state,
                 sourceCurrency: {

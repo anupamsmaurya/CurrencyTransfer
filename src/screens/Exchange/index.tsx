@@ -1,13 +1,18 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import CurrencyContainer from '../../components/CurrencyContainer'
 import { store } from '../../store/contextStore'
 import { handleTransfer } from '../../store/actionCreators'
 import styles from './index.css'
 
+/**
+ * Exhcnage screen layout component.
+ * Loads both source and target components ans Transfer button
+ */
 const ExchangeScreen = () => {
 
-    const { state: { balanceError, sourceCurrency, targetCurrency, wallet, rates }, dispatch } = useContext(store);
-    console.log('app store:', sourceCurrency, targetCurrency, wallet)
+    const { state: { balanceError, sourceCurrency, targetCurrency, wallet }, dispatch } = useContext(store);
+
+    const disabledButton = balanceError || (sourceCurrency.currency === targetCurrency.currency)
 
     const initiateTransfer = () => {
         dispatch(
@@ -31,7 +36,7 @@ const ExchangeScreen = () => {
                 sourceCurrency.amount &&
                 <button 
                     style={styles.transferButton}
-                    disabled={balanceError} 
+                    disabled={disabledButton} 
                     onClick={initiateTransfer}
                     name='transfer'
                 >

@@ -1,7 +1,7 @@
 import { Currency, ExchangeType, CurrencyContainerType } from "../types/TypeDefinitions"
 import initialWallet from "../utilities/initialWallet"
 
-const initialState = {
+const initialState : any = {
     rates: {},
     wallet: initialWallet,
     sourceCurrency: {

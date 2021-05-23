@@ -1,6 +1,6 @@
 const styles = {
     input: {
-        fontSize: 65,
+        fontSize: '4rem',
         width: '10rem',
         background: 'transparent',
         border: 'none',

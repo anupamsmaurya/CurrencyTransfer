@@ -12,11 +12,11 @@ const styles = {
         alignItems: 'flex-start'
     },
     currencyLabel: {
-        fontSize: 65
+        fontSize: '4rem'
     },
     inputContainer: {
         display: 'flex',
-        fontSize: 65
+        fontSize: '4rem'
     }
 }
 

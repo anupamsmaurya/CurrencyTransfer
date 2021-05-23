@@ -2,6 +2,11 @@ import { CurrencyContainerType, ExchangeType, RatesType } from "../types/TypeDef
 import CurrencyConverter from '../utilities/currencyConverter'
 import * as actions from './actionTypes'
 
+/**
+ * Updates current currency to a new one selected by user
+ * @param currency New currency
+ * @param exchangeType source or target
+ */
 export const updateCurrency = (currency: string, exchangeType: ExchangeType) => {
     return {
         type: actions.UPDATE_CURRENCY,
@@ -15,6 +20,15 @@ export const fetchExchangeRates = (data: any) => ({
     data
 });
 
+/**
+ * Handles user entered amount and updates the other field(source or target)
+ * @param amount amount entered by user
+ * @param type source or target
+ * @param sourceCurrency current source object from store
+ * @param targetCurrency current target object from store
+ * @param wallet current wallet balances from store
+ * @param rates last fetched exchange rates from store
+ */
 export const handleUserInput = (
         amount: number, 
         type: ExchangeType, 
@@ -24,7 +38,6 @@ export const handleUserInput = (
         rates: RatesType
     ) => {
 
-    console.log(amount, type)
     let balanceError = false;
     let sourceAmount, targetAmount
 

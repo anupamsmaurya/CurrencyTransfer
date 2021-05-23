@@ -3,7 +3,7 @@ import './App.css';
 import { StateProvider } from './store/contextStore'
 import ExchangeScreen from './screens/Exchange'
 
-function App({initialState}: any) {
+function App() {
   return (
     <div className="App">
       <StateProvider>

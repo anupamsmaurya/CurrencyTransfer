@@ -2,24 +2,9 @@ import React, { createContext, useEffect, useReducer } from 'react'
 import { reducer } from './reducer'
 import { fetchExchangeRates } from './actionCreators'
 import getExhangeRatesService from '../services/exchangeRates'
-import { Currency, ExchangeType, CurrencyContainerType } from "../types/TypeDefinitions"
-import initialWallet from "../utilities/initialWallet"
+import initialState from './initialState'
 
-const initialState :any = {
-    rates: {},
-    wallet: initialWallet,
-    sourceCurrency: {
-        currency: Currency.EUR,
-        exchangeType: ExchangeType.SOURCE,
-        amount: ''
-    } as CurrencyContainerType,
-    targetCurrency: {
-        currency: Currency.GBP,
-        exchangeType: ExchangeType.TARGET,
-        amount: ''
-    } as CurrencyContainerType
-}
-
+//create a context based on initial store values
 const store = createContext(initialState)
 const { Provider } = store
 
@@ -27,14 +12,21 @@ interface Props {
     children: React.ReactNode
 }
 
+/**
+ * Provider to serve app with the context and useReducer()
+ */
 const StateProvider = ({ children }: Props) => {
     const [state, dispatch] = useReducer(reducer, initialState)
 
+    /**
+     * Triggers once to fetch exchange rates and 
+     * initialise a poll to fetch rates every 10 seconds
+     */
     useEffect(() => {
         getExhangeRatesService().then(data => dispatch(fetchExchangeRates(data)))
         const interval = setInterval(() => {
             getExhangeRatesService().then(data => dispatch(fetchExchangeRates(data)))
-        }, 100000);
+        }, 10000);
         return () => clearInterval(interval);
     }, []);
 
