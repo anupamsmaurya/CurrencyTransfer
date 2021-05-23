@@ -53,7 +53,7 @@ const ExchangeScreen = () => {
                         style={styles.transferButton}
                         disabled={disabledButton} 
                         onClick={initiateTransfer}
-                        name='transfer'
+                        name='exchange'
                     >
                         Exchange
                     </button>

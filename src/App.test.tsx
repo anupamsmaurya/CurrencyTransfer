@@ -51,23 +51,23 @@ test('avoids invalid input', () => {
 
 });
 
-test('shows Transfer Button after input', async() => {
+test('shows Exchange Button after input', async() => {
     render(<App />);
     const {sourceCurrency} = initialState
     const sourceInput = screen.getByTestId(`${sourceCurrency.currency}${sourceCurrency.exchangeType}`)
-    expect(screen.queryByRole('button', {name: /transfer/i})).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', {name: /exchange/i})).not.toBeInTheDocument()
     userEvent.type(sourceInput, '20')
-    const button = await screen.findByRole('button', {name: /transfer/i})
+    const button = await screen.findByRole('button', {name: /exchange/i})
     expect(button).toBeVisible()
 });
 
-test('shows error on balance overflow and disables Transfer Button', async() => {
+test('shows error on balance overflow and disables Exchange Button', async() => {
     render(<App />);
     const {sourceCurrency} = initialState
     const sourceInput = screen.getByTestId(`${sourceCurrency.currency}${sourceCurrency.exchangeType}`)
-    expect(screen.queryByRole('button', {name: /transfer/i})).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', {name: /exchange/i})).not.toBeInTheDocument()
     userEvent.type(sourceInput, '101')
-    const button = await screen.findByRole('button', {name: /transfer/i})
+    const button = await screen.findByRole('button', {name: /exchange/i})
     const errorMsg = await screen.findByText( /Insufficient balance for this amount/i)
     expect(button).toBeVisible()
     expect(button).toBeDisabled()
