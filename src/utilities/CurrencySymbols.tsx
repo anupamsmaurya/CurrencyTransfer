@@ -1,4 +1,12 @@
-const CurrencySymbolMap =  {
+interface symbolMap {
+	[key: string]: {
+		symbol: string,
+		name: string,
+		code: string,
+		name_plural: string
+	}
+}
+const CurrencySymbolMap: symbolMap =  {
 	"USD" : {
 	  "symbol" : "$",
 	  "name" : "US Dollar",

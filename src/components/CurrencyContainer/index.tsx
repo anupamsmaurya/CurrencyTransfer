@@ -109,14 +109,13 @@ const CurrencyContainer: React.FC<Props> = ({config: {currency, exchangeType, am
     })
 
     return (
-        <div className="slider">
-            <div>
-                {anchors}
-            </div>
-            
+        <div className="slider">            
             <div className="slides">
                 {slides}
             </div>                
+            <div>
+                {anchors}
+            </div>
         </div>
     )
 }
